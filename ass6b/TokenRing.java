@@ -125,3 +125,27 @@ public class TokenRing {
 //Slow (wait for token)
 //Token loss = problem
 //Ring failure breaks system
+
+
+
+
+// The Ring Algorithm works in systems where processes are arranged in a logical ring.
+// Working
+// 1. A process detects coordinator failure
+// 2. It sends an ELECTION message to next active process
+// 3. Each process adds its ID to the message
+// 4. Message circulates the ring
+// 5. Initiator selects process with highest ID
+// 6. Coordinator is announced to all
+// Key Features
+//  Works in ring topology
+//  Uses message passing in sequence
+//  No central control required
+// Advantages
+//  Less message overhead than Bully
+//  Fair and structured
+//  Works well in large systems
+// Disadvantages
+//  Slower than Bully algorithm
+//  Depends on ring structure
+//  Failure handling can be complex

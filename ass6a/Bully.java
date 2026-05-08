@@ -119,3 +119,31 @@ public class Bully {
 //Too many messages
 //Not efficient for large systems
 //Needs knowledge of all processes
+
+
+// In distributed systems, a leader (coordinator) is required to manage tasks such as resource
+// allocation, synchronization, and communication. However, if the coordinator fails, the system
+// must elect a new leader dynamically using election algorithms.
+// Each process in the system has a unique ID, and processes are aware of other process IDs.
+// Based on system structure, two common election algorithms are used:
+//  Bully Algorithm
+//  Ring Algorithm
+
+
+// 1. A process detects that the coordinator has failed
+// 2. It sends ELECTION messages to all higher-ID processes
+// 3. If no one responds → it becomes the coordinator
+// 4. If a higher process responds → that process takes over election
+// 5. Winner broadcasts COORDINATOR message to all
+// Key Features
+//  Highest ID process always wins
+//  Fast election process
+//  Suitable when all processes can communicate directly
+// Advantages
+//  Simple and efficient
+//  Quick recovery from failure
+//  Ensures strongest (highest ID) process leads
+// Disadvantages
+//  High message overhead
+//  Not suitable for large systems
+//  Assumes knowledge of all processes

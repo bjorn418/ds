@@ -73,3 +73,69 @@ while True:
 # Distributed databases, banking, cloud systems.
 # 20. Main conclusion of Berkeley algorithm?
 # All systems maintain approximately same time.
+
+
+
+
+# A distributed system consists of multiple computers connected through a network that
+# coordinate their actions using message passing. Since each system has its own internal clock,
+# differences in time (clock drift) can occur, leading to inconsistencies. To maintain coordination
+# and proper execution, clock synchronization is essential.
+# Clocks in distributed systems are synchronized using physical clocks based on UTC
+# (Coordinated Universal Time) as a reference. Synchronization ensures all nodes maintain a
+# consistent notion of time.
+# Types of Clock Synchronization
+# 1. External Synchronization
+#  Uses an external reference clock (like UTC)
+#  Nodes adjust their clocks according to the reference
+# 2. Internal Synchronization
+#  Nodes synchronize with each other
+#  Adjust clocks based on mutual agreement
+# Clock Synchronization Algorithms
+# Centralized Algorithms
+#  Use a single time server
+#  Example: Berkeley Algorithm
+#  Limitation: Single point of failure
+# Distributed Algorithms
+#  No central server
+#  Nodes coordinate among themselves
+#  Example: NTP, averaging algorithms
+# Berkeley Algorithm Overview
+# The Berkeley Algorithm is a centralized clock synchronization technique where one node
+# acts as a master, and others act as slave nodes. It is used when systems do not have access
+# to an accurate external time source.
+# Working of Berkeley Algorithm
+# 5
+# 1. Master Selection
+# ○ One node is selected as the master using a leader election algorithm
+# 2. Polling Slave Nodes
+# ○ Master sends requests to all slave nodes
+# ○ Each node replies with its local time
+# 3. Time Difference Calculation
+# ○ Master calculates time differences between its clock and each slave clock
+# 4. Average Time Computation
+# ○ Master computes the average of all time differences
+# ○ Ignores faulty or extreme values (outliers)
+# 5. Broadcast Adjustment
+# ○ Master sends adjustment values (not exact time) to all nodes
+# ○ Each node updates its clock accordingly
+# Key Features
+#  Does not rely on external UTC source
+#  Reduces clock drift among nodes
+#  Improves consistency in distributed systems
+#  Uses average time correction
+# Limitations
+#  Single point of failure (master node)
+# Communication delay affects accuracy
+#  Requires re-election if master fails
+# Scope of Improvements
+#  Ignore outliers in time calculations
+#  Use backup master node
+#  Send relative time adjustments instead of exact time
+#  Reduce latency in communication
+# Implementation (Python)
+#  Master acts as clock server
+#  Clients send their local time
+#  Master calculates average and sends correction
+#  Clients update their clocks
+# This demonstrates practical implementation of synchronization in distributed systems.

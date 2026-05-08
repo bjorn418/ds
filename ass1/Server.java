@@ -57,18 +57,99 @@ public class Server{
 //15. What is serialization in RMI?
 //It converts objects into byte streams for transmission.
 //16. What files are required in RMI?
-//        ● Remote Interface
-//● Implementation class
-//● Server class
-//● Client class
+//         Remote Interface
+// Implementation class
+// Server class
+// Client class
 //17. Command to generate stub?
 //rmic AddServerImpl
 //18. Command to start registry?
 //rmiregistry
 //19. Advantages of RMI?
-//        ● Easy distributed programming
-//● Object-oriented communication
-//● Platform independence
+//         Easy distributed programming
+// Object-oriented communication
+// Platform independence
 //20. Limitations of RMI?
-//        ● Java dependent
-//● Slower due to network overhead
+//         Java dependent
+// Slower due to network overhead
+
+
+
+
+
+
+// RMI (Remote Method Invocation) – Summary
+// Remote Method Invocation (RMI) is a Java technology that enables
+// communication between Java applications running on different machines
+// in a distributed environment. Using RMI, an object in one JVM can invoke
+// methods of an object located in another JVM as if it were a local object.
+// This helps in developing distributed client-server applications.
+// RMI architecture consists of client, server, stub, skeleton, and RMI registry.
+// The RMI registry acts as a naming service that allows clients to locate
+// remote objects available on the server.
+// Key Components of RMI
+// 1. Remote Object
+// An object whose methods can be invoked remotely by another application.
+// 2. Remote Interface
+// Defines methods available for remote access.
+//  Extends java.rmi.Remote
+//  Methods throw RemoteException
+// 3. Stub
+// A client-side proxy object.
+// Responsibilities:
+//  Establish connection with remote JVM
+//  Marshal parameters
+//  Send request and receive response
+// 4. Skeleton
+// A server-side gateway.
+// Responsibilities:
+//  Receive request from stub
+//  Invoke actual method
+//  Return result to client
+// 5. RMI Registry
+// A naming service that binds remote objects to names so clients can locate
+// them.
+// Working of RMI
+// 1. Client requests remote method
+// 2. Stub receives request and sends it over network
+// 3. Skeleton on server receives request
+// 4. Actual remote method executes
+// 5. Result is sent back to client
+// This creates transparent communication between distributed applications.
+// Implementation Steps
+// 1. Create Remote Interface
+// Defines remote methods like add().
+// 2. Implement Remote Interface
+// Server class implements the interface and extends
+// UnicastRemoteObject.
+// 3. Create Server Program
+//  Creates remote object
+// Registers it using Naming.rebind()
+// 4. Create Client Program
+//  Uses Naming.lookup()
+//  Invokes remote methods
+// Stub Generation
+// Generate stub using:
+// rmic AddServerImpl
+// This creates:
+// ● AddServerImpl_Stub.class
+// Execution Steps
+// Start RMI Registry
+// start rmiregistry
+// Run Server
+// java AddServer
+// Run Client
+// java AddClient <serverIP> num1 num2
+// Example:
+// java AddClient 192.168.1.1 7 8
+// The server computes the addition and returns the result to the client.
+// Advantages of RMI
+//  Supports distributed computing
+//  Easy remote communication
+//  Object-oriented approach
+//  Simplifies client-server applications
+// Applications of RMI
+//  Distributed systems
+//  Client-server applications
+//  Enterprise systems
+// Remote database access

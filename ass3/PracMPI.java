@@ -158,3 +158,66 @@ public class PracMPI {
 // Efficient parallel execution
 //20. Command to run MPJ program?
 //mpjrun.sh -np 4 Asign2
+
+
+// Distributed System using MPI (MPJ Express) – Summary
+// Message Passing Interface (MPI) is a widely used parallel programming model that enables
+// communication between multiple processes in a distributed system. It follows a
+// message-passing mechanism, where processes exchange data to perform computations
+// collaboratively. In Java, MPI is implemented using libraries like MPJ Express, which allows
+// execution of parallel programs on multicore systems and clusters.
+// MPI follows a Single Program Multiple Data (SPMD) model, where multiple processes execute
+// the same program but operate on different portions of data. This improves performance and
+// efficiency for computational tasks like summation of large arrays.
+// Basic Concepts of MPI
+// 1. Initialization & Finalization
+//  MPI_Init() → Starts MPI environment
+//  MPI_Finalize() → Ends execution
+// 2. Communicator
+//  Group of processes that communicate with each other
+//  Default communicator: MPI_COMM_WORLD
+// 3. Rank and Size
+//  Rank → Unique ID of each process
+//  Size → Total number of processes
+// These are essential for identifying and managing processes.
+// Message Passing Operations
+// 1. Send Operation
+// Used to send data from one process to another:
+// MPI_Send()
+// 2. Receive Operation
+// Used to receive data from another process:
+// MPI_Recv()
+// These operations enable communication between distributed processes.
+// Collective Communication
+// MPI supports group communication operations:
+//  Scatter → Divides data into parts and distributes to processes
+//  Gather → Collects results from all processes
+// In this assignment, the array is divided among processes using scatter, and partial sums are
+// combined using gather.
+// Working of the Program
+// 1. Input array of size N
+// 2. Divide array into N/n parts
+// 3. Distribute parts to n processors
+// 4. Each processor calculates partial sum
+// 5. Intermediate sums are displayed
+// 6. Final sum is computed by combining results
+// This demonstrates parallel computation using MPI.
+// MPJ Express
+// MPJ Express is a Java-based MPI library used for:
+//  Parallel programming
+//  Multicore execution
+//  Cluster computing
+// It acts as middleware to manage communication between processes and supports scalable
+// applications.
+// Implementation Steps
+// 1. Install MPJ Express and set environment variables
+// 2. Write Java program (e.g., ScatterGather.java)
+// 3. Compile using:
+// javac -cp mpj.jar filename.java
+// 4. Execute using:
+// mpjrun.sh -np <no_of_processes> filename
+// Advantages of MPI
+//  Efficient parallel processing
+//  Scalable to large systems
+//  Supports distributed and shared memory
+//  Improves performance of computation-heavy tasks
